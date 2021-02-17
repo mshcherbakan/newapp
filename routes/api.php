@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\Api\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::middleware('auth:api')->get('/user', [UserController::class, 'index']);
+Route::middleware('auth:api')->post('/user/create', [UserController::class, 'create']);
+Route::middleware('auth:api')->get('/user/delete/{user}', [UserController::class, 'delete']);
