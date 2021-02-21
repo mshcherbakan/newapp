@@ -4,9 +4,14 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
+use App\Models\User;
+use App\Notifications\OAuthCode;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Notification;
+use Illuminate\Support\Str;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -28,11 +33,22 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request)
     {
-        $request->authenticate();
+        $email = $request->input('email');
+        $password = $request->input('password');
 
-        $request->session()->regenerate();
+        $user = User::where(['email' => $email])
+            ->firstOrFail();
 
-        return redirect(RouteServiceProvider::HOME);
+        $result = Hash::check($password, $user->password);
+        if (!$result) {
+
+        }
+
+        $user->code = Str::random(12);
+        $user->save();
+
+        Notification::send($user, new OAuthCode());
+        return redirect()->route('oauth.code');
     }
 
     /**

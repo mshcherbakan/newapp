@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddColumnApiTokenToUsersTable extends Migration
+class AddCodeAndChatIdToUsers extends Migration
 {
     /**
      * Run the migrations.
@@ -14,11 +14,17 @@ class AddColumnApiTokenToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('api_token')
-                ->nullable()
-                ->after('password')
+            $table->string('chat_id')
                 ->unique()
-                ->default(null);
+                ->nullable()
+                ->default(null)
+                ->after('api_token');
+
+            $table->string('code')
+                ->unique()
+                ->nullable()
+                ->default(null)
+                ->after('chat_id');
         });
     }
 
@@ -30,7 +36,8 @@ class AddColumnApiTokenToUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('api_token');
+            $table->dropColumn('chat_id');
+            $table->dropColumn('code');
         });
     }
 }

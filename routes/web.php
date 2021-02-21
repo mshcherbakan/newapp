@@ -32,7 +32,8 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/users', [UserController::class, 'index'])->name('users');
 });
 
-
+Route::get('/login-code', [OauthController::class, 'create'])->name('oauth.code');
+Route::post('/login-code', [OauthController::class, 'store'])->name('oauth.store');
 Route::get('/github/redirect', [OauthController::class, 'githubRedirect'])->name('github.redirect');
 Route::get('/github/callback', [OauthController::class, 'githubCallback'])->name('github.callback');
 Route::get('/google/redirect', [OauthController::class, 'googleRedirect'])->name('google.redirect');
