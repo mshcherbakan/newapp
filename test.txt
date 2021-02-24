@@ -1,0 +1,11 @@
+[33m[2021-02-24 18:34:19][23] Processing:[39m App\Jobs\DownloadUserApi
+[37;41m[2021-02-24 18:34:19][23] Failed:    [39;49m App\Jobs\DownloadUserApi
+[33m[2021-02-24 18:34:19][24] Processing:[39m App\Jobs\DownloadUserApi
+[37;41m[2021-02-24 18:34:19][24] Failed:    [39;49m App\Jobs\DownloadUserApi
+[33m[2021-02-24 18:34:19][25] Processing:[39m App\Jobs\DownloadUserApi
+[37;41m[2021-02-24 18:34:19][25] Failed:    [39;49m App\Jobs\DownloadUserApi
+[33m[2021-02-24 18:34:22][26] Processing:[39m App\Jobs\DownloadUserApi
+[37;41m[2021-02-24 18:34:22][26] Failed:    [39;49m App\Jobs\DownloadUserApi
+[33m[2021-02-24 18:34:22][27] Processing:[39m App\Jobs\DownloadUserApi
+[37;41m[2021-02-24 18:34:22][27] Failed:    [39;49m App\Jobs\DownloadUserApi
+^C

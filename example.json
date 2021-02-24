@@ -1,0 +1,14 @@
+{
+    "uuid": "29d9738c-cf1d-45ed-884f-d96b0152ea00",
+    "displayName": "App\\Jobs\\DownloadUserApi",
+    "job": "Illuminate\\Queue\\CallQueuedHandler@call",
+    "maxTries": null,
+    "maxExceptions": null,
+    "backoff": null,
+    "timeout": null,
+    "retryUntil": null,
+    "data": {
+        "commandName": "App\\Jobs\\DownloadUserApi",
+        "command": "O:24:\"App\\Jobs\\DownloadUserApi\":11:{s:4:\"user\";O:45:\"Illuminate\\Contracts\\Database\\ModelIdentifier\":4:{s:5:\"class\";s:15:\"App\\Models\\User\";s:2:\"id\";i:1;s:9:\"relations\";a:0:{}s:10:\"connection\";s:5:\"mysql\";}s:3:\"job\";N;s:10:\"connection\";N;s:5:\"queue\";N;s:15:\"chainConnection\";N;s:10:\"chainQueue\";N;s:19:\"chainCatchCallbacks\";N;s:5:\"delay\";N;s:11:\"afterCommit\";N;s:10:\"middleware\";a:0:{}s:7:\"chained\";a:0:{}}"
+    }
+}

@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', [UserController::class, 'index']);
-Route::middleware('auth:api')->post('/user/create', [UserController::class, 'create']);
-Route::middleware('auth:api')->get('/user/delete/{user}', [UserController::class, 'delete']);
+Route::middleware(['auth:api', 'track'])->group(function (){
+    Route::get('/user', [UserController::class, 'index']);
+    Route::post('/user/create', [UserController::class, 'create']);
+    Route::get('/user/delete/{user}', [UserController::class, 'delete']);
+});

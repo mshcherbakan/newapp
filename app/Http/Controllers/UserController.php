@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\DownloadUserApi;
 use App\Models\User;
 use Illuminate\Http\Request;
 

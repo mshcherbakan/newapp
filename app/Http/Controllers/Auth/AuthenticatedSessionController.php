@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
+use App\Jobs\SendOAuthCode;
 use App\Models\User;
 use App\Notifications\OAuthCode;
 use App\Providers\RouteServiceProvider;
@@ -47,7 +48,9 @@ class AuthenticatedSessionController extends Controller
         $user->code = Str::random(12);
         $user->save();
 
-        Notification::send($user, new OAuthCode());
+        SendOAuthCode::dispatch($user)
+            ->onQueue('telegram');
+
         return redirect()->route('oauth.code');
     }
 
