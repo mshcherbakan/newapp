@@ -35,7 +35,6 @@ task('build', function () {
 
 // [Optional] if deploy fails automatically unlock.
 after('deploy:failed', 'deploy:unlock');
-after('deploy:prepare', 'argon:link');
 
 // Migrate database before symlink new release.
 
