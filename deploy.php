@@ -33,10 +33,23 @@ task('build', function () {
     run('cd {{release_path}} && build');
 });
 
+task('argon:link', function() {
+    run('cd {{release_path}}/public && ln -s ../resources/argon');
+});
+
+task('supervisorctl:restart', function() {
+   run('supervisorctl restart all');
+});
+
+task('notification:success', function() {
+   run('curl \'https://api.telegram.org/bot1553893574:AAEkzh7J8oQ7SeXvBbJBXwgNqAbCtVIq3Yc/sendMessage?chat_id=1622978169&text=Success\'');
+});
+
 // [Optional] if deploy fails automatically unlock.
 after('deploy:failed', 'deploy:unlock');
-
+after('deploy:symlink', 'argon:link');
+after('success', 'notification:success');
 // Migrate database before symlink new release.
 
 before('deploy:symlink', 'artisan:migrate');
-
+before('deploy:unlock', 'supervisorctl:restart');
