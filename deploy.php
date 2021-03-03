@@ -33,10 +33,6 @@ task('build', function () {
     run('cd {{release_path}} && build');
 });
 
-task('argon:link', function () {
-    run('cd {{release_path}}/public && ln -s ../resources/argon');
-});
-
 // [Optional] if deploy fails automatically unlock.
 after('deploy:failed', 'deploy:unlock');
 after('deploy:prepare', 'argon:link');
